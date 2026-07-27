@@ -1,6 +1,7 @@
 import os
 from mistralai.client import Mistral
 
+print("MISTRAL_API_KEY:", os.environ.get("MISTRAL_API_KEY"))
 api_key = os.environ["MISTRAL_API_KEY"]
 model = "voxtral-mini-latest"
 
@@ -16,3 +17,4 @@ with open("./audio.mp3", "rb") as f:
        timestamp_granularities=["segment"],
    )
 transcription = "\n".join([f"[{s.start}s -> {s.end}s] {s.speaker_id} : {s.text}" for s in transcription_response.segments])
+print("Transcription:\n", transcription)
