@@ -13,8 +13,9 @@ with open("./audio.mp3", "rb") as f:
        file={
            "content": f,
            "file_name": "audio.mp3",
-       },diarize=True,
-       timestamp_granularities=["segment"],
+       },
+       diarize=True,
+       timestamp_granularities=["segment"]
    )
 transcription = "\n".join([f"[{s.start}s -> {s.end}s] {s.speaker_id} : {s.text}" for s in transcription_response.segments])
 print("Transcription:\n", transcription)
